@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-theme-violet;
+  @apply bg-theme-violet text-c-dark-purple;
 }
