@@ -8,6 +8,9 @@ export default {
         "c-purple": "#ab9ff2",
         "c-dark-purple": "#3c315b",
       },
+      fontFamily: {
+        // poppins: "Poppins sans-serif",
+      },
     },
   },
   plugins: [],

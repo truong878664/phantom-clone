@@ -9,7 +9,8 @@ function App() {
       <main>
         <Welcome />
         <Wallet />
-        <div className="h-screen bg-blue-300">123</div>
+        {/* <Wallet /> */}
+        {/* <div className="h-screen bg-blue-300">123</div> */}
       </main>
     </>
   );

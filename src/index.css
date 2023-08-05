@@ -5,3 +5,7 @@
 body {
   @apply bg-theme-violet text-c-dark-purple;
 }
+
+#root {
+  font-family: "Poppins", sans-serif;
+}
