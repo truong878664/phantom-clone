@@ -1,3 +1,7 @@
+import SectionCard from "./components/SectionCard";
+import dataSecurity from "./data/dataSecuriry";
+import dataWallet from "./data/dataWallet";
+import dataWeb3tool from "./data/dataWeb3tool";
 import Header from "./sections/Header";
 import Wallet from "./sections/Wallet";
 import Welcome from "./sections/Welcome";
@@ -9,8 +13,27 @@ function App() {
       <main>
         <Welcome />
         <Wallet />
-        {/* <Wallet /> */}
-        {/* <div className="h-screen bg-blue-300">123</div> */}
+        <SectionCard
+          dataCard={dataWallet}
+          header="Keep everything in|one place"
+          iconTitle="fa-solid fa-wallet"
+          title="Your wallet"
+          name="wallet"
+        />
+        <SectionCard
+          dataCard={dataWeb3tool}
+          header="Powerful|tools made for everyone"
+          iconTitle="fa-solid fa-earth-asia"
+          title="Your web3tools"
+          name="web3tool"
+        />
+        <SectionCard
+          dataCard={dataSecurity}
+          header="Controlled by you, secured|by us"
+          iconTitle="fa-solid fa-shield-heart"
+          title="Your security"
+          name="security"
+        />
       </main>
     </>
   );
