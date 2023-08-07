@@ -45,9 +45,7 @@ function ContentWallet() {
           transform: `translate3d(${nextX}px, 0px, 0px)`,
         });
       },
-      move(e: TypeEvent): any {
-        console.log(deltaX);
-        
+      move(e: TypeEvent): any {        
         if (!isMouseUp) return;
         const clientX = this.getClientX(e);
         deltaX = clientX - startX;
