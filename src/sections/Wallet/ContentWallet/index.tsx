@@ -1,7 +1,39 @@
 import React, { useEffect, useRef } from "react";
 import walletVideo1 from "../../../assets/video/wallet1.webm";
 import walletVideo2 from "../../../assets/video/wallet2.webm";
+import walletVideo3 from "../../../assets/video/wallet3.webm";
+import walletVideo4 from "../../../assets/video/wallet4.webm";
+import walletVideo5 from "../../../assets/video/wallet5.webm";
 import { gsap } from "gsap";
+import CardLi from "../../../components/CardLi";
+
+const dataWallet = [
+  {
+    color: "#ab9ff2",
+    video: walletVideo1,
+    describe: "Multiple chains, one wallet. No more switching.",
+  },
+  {
+    color: "#3d315c",
+    video: walletVideo2,
+    describe: "Seamlessly access the largest NFT marketplaces.",
+  },
+  {
+    color: "#ffdadc",
+    video: walletVideo3,
+    describe: "Showcase your NFT collection.",
+  },
+  {
+    color: "#ffffc4",
+    video: walletVideo4,
+    describe: "Monitor activity with transaction history and notifications.",
+  },
+  {
+    color: "#e8e6e2",
+    video: walletVideo5,
+    describe: "No limits on tokens, balances, or transactions.",
+  },
+];
 
 function ContentWallet() {
   const wrapperCardUlRef: React.RefObject<HTMLUListElement> = useRef(null);
@@ -15,6 +47,7 @@ function ContentWallet() {
     let headOrEnd: "head" | "end" | null;
     let nextX: number;
     let deltaX: number;
+
     const wrapperCardUl: any = wrapperCardUlRef.current!;
     const wrapperCardDiv = wrapperCardDivRef.current!;
 
@@ -45,7 +78,11 @@ function ContentWallet() {
           transform: `translate3d(${nextX}px, 0px, 0px)`,
         });
       },
+<<<<<<< HEAD
       move(e: TypeEvent): any {        
+=======
+      move(e: TypeEvent): any {
+>>>>>>> fb9feb3a9daa333b4113c01c6b03f61dd693d430
         if (!isMouseUp) return;
         const clientX = this.getClientX(e);
         deltaX = clientX - startX;
@@ -130,61 +167,9 @@ function ContentWallet() {
           style={{ transform: "translate3d(20px, 0px, 0px)" }}
           id="wrapper-ul"
         >
-          <li className="w-11/12 aspect-[7/10] shrink-0">
-            <div className="bg-c-purple h-full rounded-xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 bottom-0 ">
-                <video
-                  playsInline
-                  autoPlay
-                  loop
-                  muted
-                  className="h-full w-full object-cover"
-                  src={walletVideo1}
-                ></video>
-              </div>
-            </div>
-          </li>
-
-          <li className="w-10/12 aspect-[7/10] shrink-0">
-            <div className="bg-c-purple h-full rounded-xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 bottom-0 ">
-                <video
-                  playsInline
-                  autoPlay
-                  loop
-                  muted
-                  className="h-full w-full object-cover"
-                  src={walletVideo2}
-                ></video>
-              </div>
-            </div>
-          </li>
-          <li className="w-10/12 aspect-[7/10] shrink-0">
-            <div className="bg-c-purple h-full rounded-xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 bottom-0 ">
-                <video
-                  playsInline
-                  autoPlay
-                  loop
-                  muted
-                  className="h-full w-full object-cover"
-                  src={walletVideo1}
-                ></video>
-              </div>
-            </div>
-          </li>
-          <li className="w-10/12 aspect-[7/10] shrink-0">
-            <div className="bg-c-purple h-full rounded-xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 bottom-0 ">
-                <video
-                  playsInline
-                  muted
-                  className="h-full w-full object-cover"
-                  src={walletVideo1}
-                ></video>
-              </div>
-            </div>
-          </li>
+          {dataWallet.map((card, index) => (
+            <CardLi video={card.video} key={index} color={card.color} />
+          ))}
         </ul>
       </div>
     </div>
