@@ -9,7 +9,7 @@ type SectionCard = {
     video: string;
     describe: string;
   }[];
-  header: `${string}|${string}`;
+  header: `${string}|${string}*${string}` | `${string}*${string}|${string}`;
   title: string;
   name: string;
   iconTitle: string;
@@ -48,7 +48,7 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
         isMouseUp = false;
         nextX =
           headOrEnd === "head"
-            ? 15
+            ? 1
             : headOrEnd === "end"
             ? -widthUlWrapper + widthLiCard
             : null;
@@ -143,11 +143,11 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
             </button>
           </div>
         </div>
-        <div className="w-full mt-10 overflow-hidden" ref={wrapperCardDivRef}>
+        <div className="w-full mt-10 overflow-hidden px-6 md:px-10" ref={wrapperCardDivRef}>
           <ul
-            className="w-full flex items-stretch gap-2 pointer-events-none user-select-none"
+            className="w-full flex items-stretch gap-2 pointer-events-none user-select-none md:gap-6"
             ref={wrapperCardUlRef}
-            style={{ transform: "translate3d(20px, 0px, 0px)" }}
+            style={{ transform: "translate3d(0px, 0px, 0px)" }}
             data-name={name}
           >
             {dataCard.map((card, index) => (

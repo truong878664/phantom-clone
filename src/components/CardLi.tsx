@@ -4,7 +4,7 @@ function CardLi({ video, color }: { video: string; color: string }) {
   const bgTheme = lightOrDark(color);
 
   return (
-    <li className="w-11/12 aspect-[7/10] shrink-0">
+    <li className="w-11/12 aspect-[7/10] shrink-0 md:w-1/2">
       <div
         className="h-full rounded-xl relative overflow-hidden p-8"
         style={{ backgroundColor: color }}

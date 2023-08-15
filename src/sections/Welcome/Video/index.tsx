@@ -8,7 +8,7 @@ function Video() {
   });
   return (
     <div className="relative h-screen">
-      <div className="">
+      <div className="w-96 mx-auto">
         <video
           autoPlay={true}
           loop={true}

@@ -1,11 +1,13 @@
 import Logo from "../../partials/Logo";
+import logoText from "../../assets/image/logoText.png"
 
 function Header() {
   return (
     <header>
       <div className="py-3 px-5 flex justify-between items-center h-[76px] relative z-[1]">
-        <div className="z-[-1]">
-          <Logo size="36" className="fill-c-dark-purple" />
+        <div className="z-[-1] flex">
+          <Logo size="40" className="fill-c-dark-purple md:w-10" />
+          <img src={logoText} alt="" className="h-8 aspect-auto ml-2 hidden lg:block"/>
         </div>
         <div className="flex items-center gap-2 relative">
           <input
