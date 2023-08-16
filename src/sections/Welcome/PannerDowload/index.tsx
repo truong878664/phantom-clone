@@ -1,35 +1,32 @@
-import appStore from "../../../assets/image/appstore.png";
 import LabelHeading from "../../../components/LabelHeading";
+import getUA from "../../../function/getUA";
+import iconDownload from "./iconDownload";
 
-type PannerDownload = {
-  position: "relative" | "sticky";
-  theme: "white" | "purple";
-};
-function PannerDownload({ position, theme }: PannerDownload) {
-  const className = {
-    relative: "h-screen grid place-content-center mt-[-20vh]",
-    sticky: "sticky top-0 pt-44 pb-20 mt-[-76px]",
-  };
-  const themes = {
-    white: {
-      bg: "bg-white",
-      fillLogo: "#AB9FF2",
-      colorEye: "#F5F2FF",
-    },
-    purple: {
-      bg: "bg-c-purple",
-      fillLogo: "#AB9FF2",
-      colorEye: "#F5F2FF",
-    },
-  };
+interface PannerDownload {
+  title: `${string}*${string}|${string}`;
+  topTitle: string;
+  sizeLabelHeader: "medium" | "large"
+}
+
+function PannerDownload({ title, topTitle, sizeLabelHeader }: PannerDownload) {
+  const nameDevice = getUA();
+  const sizeLabelHeaders = {
+    medium: "text-3xl lg:text-7xl xl:text-8xl",
+    large: "text-4xl lg:text-8xl xl:text-9xl"
+  } 
+ 
   return (
-    <div
-      data-theme={theme}
-      className={`${className[position]} ${themes[theme]}`}
-    >
-      <div className=" flex flex-col items-center text-center">
-        <span className="text-sm">
-          The crypto wallet that’ll take you places
+    <div className="flex flex-col items-center text-center">
+      <span className="text-sm mb-5 lg:text-xl xl:text-2xl">{topTitle}</span>
+      <LabelHeading title={title} className="" sizeText={sizeLabelHeaders[sizeLabelHeader]} />
+      <div className="mt-12 flex flex-col items-center">
+        <button className="bg-white py-2 w-fit px-4 rounded-full flex items-center justify-center gap-2 lg:px-6 lg:py-4 lg:mt-20 xl:mt-4">
+          <img src={iconDownload[nameDevice]} alt="" className="w-10" />
+          <span>Download for {nameDevice}</span>
+        </button>
+        <span className="text-xs mt-4 text-c-dark-purple/70 w-52 lg:text-sm">
+          Also available other browsers and devices.{" "}
+          <a className="underline">Discover more</a>
         </span>
         <LabelHeading
           fillLogo={themes[theme].fillLogo}

@@ -8,7 +8,7 @@ function Video() {
   });
   return (
     <div className="relative h-screen">
-      <div className="">
+      <div className="max-w-sm mx-auto lg:max-w-lg">
         <video
           autoPlay={true}
           loop={true}
