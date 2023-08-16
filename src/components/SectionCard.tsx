@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import CardLi from "./CardLi";
 import LabelHeading from "./LabelHeading";
+import { ScrollTrigger } from "gsap/all";
 
 type SectionCard = {
   dataCard: {
@@ -15,27 +16,30 @@ type SectionCard = {
   iconTitle: string;
 };
 
-function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) {
+function SectionCard({
+  dataCard,
+  header,
+  title,
+  name,
+  iconTitle,
+}: SectionCard) {
   const wrapperCardUlRef: React.RefObject<HTMLUListElement> = useRef(null);
   const wrapperCardDivRef: React.RefObject<HTMLDivElement> = useRef(null);
-  useEffect(() => {    
+  useEffect(() => {
     type TypeEvent = React.TouchEvent<Element> | React.MouseEvent<Element>;
+    let isMouseUp = false,
+      startX: number,
+      currentX: number,
+      nextX: number,
+      deltaX: number;
 
-    let isMouseUp = false;
-    let startX: number;
-    let currentX: number;
-    let headOrEnd: "head" | "end" | null;
-    let nextX: number;
-    let deltaX: number;
-
-    const wrapperCardUl: any = wrapperCardUlRef.current!;
-    const wrapperCardDiv = wrapperCardDivRef.current!;
-
-    const widthUlWrapper = wrapperCardUl.scrollWidth;
-    const widthLiCard = wrapperCardUl.firstChild.offsetWidth;
-
-    const minTransformX = widthLiCard / 2;
-    const maxTransformX = widthUlWrapper - widthLiCard / 2;
+    let wrapperCardUl: any,
+      wrapperCardDiv: any,
+      widthUlWrapper: any,
+      widthLiCard: any,
+      minTransformX: any,
+      maxTransformX: any;
+    updateMinMaxTransformX();
 
     const eventClick = {
       start(e: TypeEvent): any {
@@ -43,16 +47,19 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
         startX = this.getClientX(e);
         const maxtrix = new DOMMatrixReadOnly(wrapperCardUl.style.transform);
         currentX = maxtrix.m41;
+        updateMinMaxTransformX();
       },
       end(): any {
         isMouseUp = false;
-        nextX =
-          headOrEnd === "head"
-            ? 1
-            : headOrEnd === "end"
-            ? -widthUlWrapper + widthLiCard
-            : null;
         if (!nextX) return;
+        if (nextX <= minTransformX && nextX > 0) {
+          nextX = 0;
+        } else if (
+          nextX >= -maxTransformX &&
+          nextX < -(widthUlWrapper - wrapperCardUl.offsetWidth)
+        ) {
+          nextX = -(maxTransformX - widthLiCard);
+        }
         gsap.to(`[data-name='${name}']`, {
           duration: 0.5,
           transform: `translate3d(${nextX}px, 0px, 0px)`,
@@ -65,12 +72,8 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
         nextX = deltaX + currentX;
         if (nextX > minTransformX) {
           nextX = minTransformX;
-          headOrEnd = "head";
         } else if (nextX < -maxTransformX) {
           nextX = -maxTransformX;
-          headOrEnd = "end";
-        } else {
-          headOrEnd = null;
         }
         gsap.to(`[data-name='${name}']`, {
           duration: 0.5,
@@ -89,6 +92,15 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
         return clientX;
       },
     };
+
+    function updateMinMaxTransformX() {
+      wrapperCardUl = wrapperCardUlRef.current!;
+      wrapperCardDiv = wrapperCardDivRef.current!;
+      widthUlWrapper = wrapperCardUl.scrollWidth;
+      widthLiCard = wrapperCardUl.firstChild.offsetWidth;
+      minTransformX = widthLiCard;
+      maxTransformX = widthUlWrapper - wrapperCardUl.offsetWidth + widthLiCard;
+    }
 
     const touchstartHandler = (e: any) => {
       eventClick.start(e);
@@ -120,40 +132,65 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
       window.removeEventListener("mouseup", touchEndHandler);
     };
   }, []);
+
+  useEffect(() => {
+    const queryLabelHeading = `[data-name='label-heading-${name}']`;
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(queryLabelHeading, {
+      scrollTrigger: {
+        trigger: queryLabelHeading,
+        start: "end end",
+        scrub: 1,
+      },
+      opacity: 1,
+      scale: 1,
+    });    
+  }, []);
+
+ 
   return (
     <section id={name}>
       <div className="h-[120vh] mt-[-50vh] relative z-[-1]">
-        <div className="sticky top-1/2 -translate-y-1/2 text-center">
-          <LabelHeading title={header} sizeText="text-3xl lg:text-7xl xl:text-8xl" />
+        <div
+          className="sticky top-1/2 -translate-y-1/2 text-center opacity-0 scale-90"
+          data-name={`label-heading-${name}`}
+        >
+          <LabelHeading
+            title={header}
+            sizeText="text-3xl lg:text-7xl xl:text-8xl"
+          />
         </div>
       </div>
-
-      <div className="h-screen max-w-[1728px] mx-auto">
-        <div className="flex justify-between items-center mt-10 px-4">
-          <div className="bg-white rounded-full h-10 flex items-center px-4 gap-2 text-sm lg:text-xl">
-            <i className={iconTitle}></i>
-            <span>{title}</span>
+      <div className="w-full overflow-x-hidden">
+        <div className="h-screen max-w-[1728px] mx-auto">
+          <div className="flex justify-between items-center mt-10 px-4">
+            <div className="bg-white rounded-full h-10 flex items-center px-4 gap-2 text-sm lg:text-xl">
+              <i className={iconTitle}></i>
+              <span>{title}</span>
+            </div>
+            <div className="flex bg-white p-1 rounded-full gap-1">
+              <button className="w-9 aspect-square rounded-full hover:bg-c-purple/30">
+                <i className="fa-solid fa-angle-left" />
+              </button>
+              <button className="w-9 aspect-square rounded-full hover:bg-c-purple/30">
+                <i className="fa-solid fa-angle-right"></i>
+              </button>
+            </div>
           </div>
-          <div className="flex bg-white p-1 rounded-full gap-1">
-            <button className="w-9 aspect-square rounded-full hover:bg-c-purple/30">
-              <i className="fa-solid fa-angle-left" />
-            </button>
-            <button className="w-9 aspect-square rounded-full hover:bg-c-purple/30">
-              <i className="fa-solid fa-angle-right"></i>
-            </button>
-          </div>
-        </div>
-        <div className="w-full select-none mt-10 z-10 relative px-6 md:px-10 cursor-col-resize" ref={wrapperCardDivRef}>
-          <ul
-            className="w-full flex items-stretch gap-2 pointer-events-none user-select-none md:gap-6"
-            ref={wrapperCardUlRef}
-            style={{ transform: "translate3d(0px, 0px, 0px)" }}
-            data-name={name}
+          <div className="w-full select-none mt-10 z-10 relative px-6 md:px-10 cursor-col-resize"
+            ref={wrapperCardDivRef}
           >
-            {dataCard.map((card, index) => (
-              <CardLi video={card.video} key={index} color={card.color} />
-            ))}
-          </ul>
+            <ul 
+              className="w-full flex items-stretch gap-2 user-select-none md:gap-6" 
+              ref={wrapperCardUlRef}
+              style={{ transform: "translate3d(0px, 0px, 0px)" }}
+              data-name={name}
+            >
+              {dataCard.map((card, index) => (
+                <CardLi video={card.video} key={index} color={card.color} />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

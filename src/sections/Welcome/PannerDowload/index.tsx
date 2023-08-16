@@ -14,7 +14,7 @@ function PannerDownload({ title, topTitle, sizeLabelHeader }: PannerDownload) {
     medium: "text-3xl lg:text-7xl xl:text-8xl",
     large: "text-4xl lg:text-8xl xl:text-9xl"
   } 
-
+ 
   return (
     <div className="flex flex-col items-center text-center">
       <span className="text-sm mb-5 lg:text-xl xl:text-2xl">{topTitle}</span>
