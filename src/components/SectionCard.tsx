@@ -177,7 +177,7 @@ function SectionCard({
               </button>
             </div>
           </div>
-          <div className="w-full select-none mt-10 z-10 relative px-6 md:px-10 cursor-col-resize"
+          <div className="w-full select-none mt-10 z-10 relative px-6 md:px-10 cursor-w-resize"
             ref={wrapperCardDivRef}
           >
             <ul 

@@ -22,6 +22,9 @@ function CardLi({ video, color }: { video: string; color: string }) {
       _y: 0,
       __x: 0,
       __y: 0,
+      _x2() {
+        return this.x === 0 ? 0 : this.x > 0 ? -4 : 4;
+      },
     };
 
     const MAX_MOVE = 20;
@@ -29,24 +32,26 @@ function CardLi({ video, color }: { video: string; color: string }) {
     if (isEqual(mouseX, x)) {
       console.log("left");
       positionMove.x = MAX_MOVE;
-      positionMove.y = 0;
       positionMove._x = 2;
-      positionMove._y = 0;
       positionMove.__x = -4;
+
+      positionMove.y = 0;
+      positionMove._y = 0;
       positionMove.__y = 0;
     } else if (isEqual(mouseY, y)) {
       console.log("top");
       positionMove.x = 0;
-      positionMove.y = MAX_MOVE;
       positionMove._x = 0;
-      positionMove._y = 2;
       positionMove.__x = 0;
+
+      positionMove._y = 2;
+      positionMove.y = MAX_MOVE;
       positionMove.__y = -4;
     } else if (isEqual(mouseY, y + width)) {
       console.log("right");
       positionMove.x = -MAX_MOVE;
       positionMove.y = 0;
-      positionMove._x =-2;
+      positionMove._x = -2;
       positionMove._y = 0;
       positionMove.__x = 4;
       positionMove.__y = 0;
@@ -59,6 +64,8 @@ function CardLi({ video, color }: { video: string; color: string }) {
       positionMove.__x = 0;
       positionMove.__y = 4;
     }
+
+    console.log(positionMove._x2());
 
     const tlLi = gsap.timeline();
     tlLi.to(li, { x: positionMove.x, y: positionMove.y, duration: 0.3 });

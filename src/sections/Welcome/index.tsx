@@ -20,11 +20,8 @@ function Welcome() {
   }, []);
 
   return (
-    <section id="welcome">
+    <section>
       <div className="relative">
-<<<<<<< HEAD
-        <PannerDownload position="sticky" />
-=======
         <div
           className="sticky top-0 text-center pt-44 pb-20 mt-[-76px] lg:pt-64 lg:pb-40 xl:pt-40 xl:pb-0"
           id="panner-download-welcome"
@@ -36,7 +33,6 @@ function Welcome() {
             sizeLabelHeader="large"
           />
         </div>
->>>>>>> 95b2ed72e7aaef5666e39f9c3c4f82def8aa1ed6
         <Video />
       </div>
     </section>
