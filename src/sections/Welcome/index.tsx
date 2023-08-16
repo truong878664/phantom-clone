@@ -3,9 +3,9 @@ import Video from "./Video";
 
 function Welcome() {
   return (
-    <section>
+    <section id="welcome">
       <div className="relative">
-        <PannerDownload />
+        <PannerDownload position="sticky" />
         <Video />
       </div>
     </section>
