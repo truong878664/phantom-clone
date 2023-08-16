@@ -1,20 +1,22 @@
 import Logo from "../partials/Logo";
+import LogoNew from "../partials/LogoNew";
 
 type LabelHeading = {
   title: `${string}*${string}|${string}` | `${string}|${string}*${string}`;
   className?: string;
+  sizeText: string;
 };
-function LabelHeading({ title, className }: LabelHeading) {
+function LabelHeading({ title, className, sizeText }: LabelHeading) {
   const titlePartial = title.split(" ");
   return (
     <div>
       <span
-        className={`font-medium leading-tight ${className}`}
+        className={`font-medium select-none leading-tight ${className} ${sizeText}`}
       >
         {titlePartial.map((partial, index) =>
           partial === "*" ? (
             <span key={index} className="inline-block translate-y-1/4 mx-2">
-              <Logo />
+              <LogoNew className={sizeText} />
             </span>
           ) : partial === "|" ? (
             <br key={index}/>

@@ -4,6 +4,13 @@
 
 body {
   @apply bg-theme-violet text-c-dark-purple;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+::selection {
+  @apply bg-c-dark-purple text-white;
 }
 
 #root {

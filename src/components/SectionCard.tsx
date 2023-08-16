@@ -18,7 +18,7 @@ type SectionCard = {
 function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) {
   const wrapperCardUlRef: React.RefObject<HTMLUListElement> = useRef(null);
   const wrapperCardDivRef: React.RefObject<HTMLDivElement> = useRef(null);
-  useEffect(() => {
+  useEffect(() => {    
     type TypeEvent = React.TouchEvent<Element> | React.MouseEvent<Element>;
 
     let isMouseUp = false;
@@ -122,15 +122,15 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
   }, []);
   return (
     <section id={name}>
-      <div className="h-[120vh] mt-[-50vh] relative z-[-1] px-20">
+      <div className="h-[120vh] mt-[-50vh] relative z-[-1]">
         <div className="sticky top-1/2 -translate-y-1/2 text-center">
-          <LabelHeading title={header} />
+          <LabelHeading title={header} sizeText="text-3xl lg:text-7xl xl:text-8xl" />
         </div>
       </div>
 
-      <div className="h-screen">
+      <div className="h-screen max-w-[1728px] mx-auto">
         <div className="flex justify-between items-center mt-10 px-4">
-          <div className="bg-white rounded-full h-10 flex items-center px-4 gap-2 text-sm">
+          <div className="bg-white rounded-full h-10 flex items-center px-4 gap-2 text-sm lg:text-xl">
             <i className={iconTitle}></i>
             <span>{title}</span>
           </div>
@@ -143,7 +143,7 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
             </button>
           </div>
         </div>
-        <div className="w-full mt-10 overflow-hidden px-6 md:px-10" ref={wrapperCardDivRef}>
+        <div className="w-full select-none mt-10 z-10 relative px-6 md:px-10 cursor-col-resize" ref={wrapperCardDivRef}>
           <ul
             className="w-full flex items-stretch gap-2 pointer-events-none user-select-none md:gap-6"
             ref={wrapperCardUlRef}

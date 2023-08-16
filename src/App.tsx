@@ -11,38 +11,40 @@ function App() {
   return (
     <>
       <Header />
-      <main>
-        <Welcome />
-        <SectionCard
-          dataCard={dataWallet}
-          header="Keep everything | in * one place"
-          iconTitle="fa-solid fa-wallet"
-          title="Your wallet"
-          name="wallet"
-        />
-        <SectionCard
-          dataCard={dataWeb3tool}
-          header="Powerful * tools | made for everyone"
-          iconTitle="fa-solid fa-earth-asia"
-          title="Your web3tools"
-          name="web3tool"
-        />
-        <SectionCard
-          dataCard={dataSecurity}
-          header="Controlled by you, | secured * by us"
-          iconTitle="fa-solid fa-shield-heart"
-          title="Your security"
-          name="security"
-        />
-        <div className="grid place-content-center pb-72">
-          <PannerDownload
-            title="Download * Phantom | to get started"
-            topTitle="Trusted by more than 3 million people"
-            sizeLabelHeader="medium"
+      <>
+        <main>
+          <Welcome />
+          <SectionCard
+            dataCard={dataWallet}
+            header="Keep everything | in * one place"
+            iconTitle="fa-solid fa-wallet"
+            title="Your wallet"
+            name="wallet"
           />
-        </div>
-      </main>
-      <Footer />
+          <SectionCard
+            dataCard={dataWeb3tool}
+            header="Powerful * tools | made for everyone"
+            iconTitle="fa-solid fa-earth-asia"
+            title="Your web3tools"
+            name="web3tool"
+          />
+          <SectionCard
+            dataCard={dataSecurity}
+            header="Controlled by you, | secured * by us"
+            iconTitle="fa-solid fa-shield-heart"
+            title="Your security"
+            name="security"
+          />
+          <div className="grid place-content-center pb-72 md:pt-32">
+            <PannerDownload
+              title="Download * Phantom | to get started"
+              topTitle="Trusted by more than 3 million people"
+              sizeLabelHeader="medium"
+            />
+          </div>
+        </main>
+        <Footer />
+      </>
     </>
   );
 }
