@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import LogoNew from "../partials/LogoNew";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 type LabelHeading = {
   title: `${string}*${string}|${string}` | `${string}|${string}*${string}`;
@@ -31,6 +31,10 @@ function LabelHeading({ title, className, sizeText }: LabelHeading) {
       });
     });
   }, []);
+
+
+
+
   return (
     <div>
       <span

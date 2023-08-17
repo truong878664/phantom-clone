@@ -8,6 +8,12 @@ export default {
         "c-purple": "#ab9ff2",
         "c-dark-purple": "#3c315b",
       },
+      keyframes: {
+        show: {
+          "0%, 90%": { opacity: 0 },
+          "100%": { opacity: 100 },
+        },
+      },
       fontFamily: {
         // poppins: "Poppins sans-serif",
       },

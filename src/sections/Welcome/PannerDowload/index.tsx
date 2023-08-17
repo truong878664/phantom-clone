@@ -18,14 +18,14 @@ function PannerDownload({ title, topTitle, sizeLabelHeader }: PannerDownload) {
 
   const buttonDownloadRef: React.RefObject<HTMLButtonElement> = useRef(null);
   useEffect(() => {}, []);
-  function handleMouseMove() {
-    console.log(123);
+  function handleMouseMove(e: any) {
+    console.log(e.clientX);
   }
 
   return (
     <>
       <div className="flex flex-col items-center text-center">
-        <span className="text-sm mb-5 lg:text-xl xl:text-2xl">
+        <span className="text-sm mb-5 lg:text-xl xl:text-2xl animate-[show_2s_linear]">
           {topTitle}
         </span>
         <div className="z-10">
@@ -36,9 +36,9 @@ function PannerDownload({ title, topTitle, sizeLabelHeader }: PannerDownload) {
           />
         </div>
 
-        <div className="mt-12 flex flex-col items-center">
+        <div className="mt-12 flex flex-col items-center animate-[show_2s_linear]">
           <button
-            onClick={handleMouseMove}
+            onMouseMove={handleMouseMove}
             ref={buttonDownloadRef}
             className="bg-white py-2 w-fit px-4 rounded-full flex items-center justify-center gap-2 lg:px-6 lg:py-4 lg:mt-20 xl:mt-4"
           >
