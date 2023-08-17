@@ -22,7 +22,7 @@ function LogoNew({ theme = "purple", className }: LogoNew) {
           <g filter="url(#filter0_f_5_61)">
             <path
               fill={themeLogos[theme].fill}
-              className=""
+              className="logo-body"
               d="M633.972 54.7147C706.257 125.207 688.592 252.289 633.189 381.215C581.5 501.5 475.5 514.5 467.189 429.215C388.689 569.715 242.689 558.215 275.689 429.215C208.689 549.215 93.2255 587.186 41.2712 552.182C-1.38492 523.442 -7.81549 453.666 19.1423 377.58C45.2589 307.735 89.9331 235.862 152.599 171.602C314.456 5.62833 529.974 -46.7037 633.972 54.7147Z"
             />
           </g>
@@ -33,6 +33,7 @@ function LogoNew({ theme = "purple", className }: LogoNew) {
               rx="32"
               ry="43.5"
               fill={themeLogos[theme].eye}
+              className="logo-eye"
             />
           </g>
           <g filter="url(#filter2_f_5_61)">
@@ -42,6 +43,7 @@ function LogoNew({ theme = "purple", className }: LogoNew) {
               rx="32"
               ry="43.5"
               fill={themeLogos[theme].eye}
+              className="logo-eye"
             />
           </g>
         </g>

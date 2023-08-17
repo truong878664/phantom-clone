@@ -60,7 +60,7 @@ function SectionCard({
         ) {
           nextX = -(maxTransformX - widthLiCard);
         }
-        gsap.to(`[data-name='${name}']`, {
+        gsap.to(`[data-name='ul-card-${name}']`, {
           duration: 0.5,
           transform: `translate3d(${nextX}px, 0px, 0px)`,
         });
@@ -75,7 +75,7 @@ function SectionCard({
         } else if (nextX < -maxTransformX) {
           nextX = -maxTransformX;
         }
-        gsap.to(`[data-name='${name}']`, {
+        gsap.to(`[data-name='ul-card-${name}']`, {
           duration: 0.5,
           transform: `translate3d(${nextX}px, 0px, 0px)`,
         });
@@ -135,6 +135,7 @@ function SectionCard({
 
   useEffect(() => {
     const queryLabelHeading = `[data-name='label-heading-${name}']`;
+    const queryLabelUlCard = `[data-name='ul-card-${name}']`;
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(queryLabelHeading, {
       scrollTrigger: {
@@ -144,10 +145,20 @@ function SectionCard({
       },
       opacity: 1,
       scale: 1,
-    });    
+    });
+
+    gsap.to(queryLabelUlCard, {
+      scrollTrigger: {
+        trigger: queryLabelUlCard,
+        start: "top center",
+        markers: false,
+      },
+      onStart() {
+        this._targets[0].dataset.status = "un-group"
+      },
+    });
   }, []);
 
- 
   return (
     <section id={name}>
       <div className="h-[120vh] mt-[-50vh] relative z-[-1]">
@@ -177,17 +188,25 @@ function SectionCard({
               </button>
             </div>
           </div>
-          <div className="w-full select-none mt-10 z-10 relative px-6 md:px-10 cursor-w-resize"
+          <div
+            className="w-full select-none mt-10 z-10 relative px-6 md:px-10 cursor-w-resize active:cursor-grabbing"
             ref={wrapperCardDivRef}
           >
-            <ul 
-              className="w-full flex items-stretch gap-2 user-select-none md:gap-6" 
+            <ul
+              data-status="group"
+              className="w-full flex items-stretch gap-2 user-select-none md:gap-6 data-[status='group']:relative group/ul-card"
               ref={wrapperCardUlRef}
               style={{ transform: "translate3d(0px, 0px, 0px)" }}
-              data-name={name}
+              data-name={`ul-card-${name}`}
             >
               {dataCard.map((card, index) => (
-                <CardLi video={card.video} key={index} color={card.color} />
+                <CardLi
+                  video={card.video}
+                  key={index}
+                  color={card.color}
+                  style={{ marginLeft: `${-index * 10}px` }}
+                  className="group-data-[status='group']/ul-card:absolute group-data-[status='group']/ul-card:left-1/2 group-data-[status='group']/ul-card:!-translate-x-1/2 group-data-[status='group']/ul-card:transition-all group-data-[status='group']/ul-card:duration-1000 group-data-[status='un-group']/ul-card:!ml-0"
+                />
               ))}
             </ul>
           </div>
