@@ -7,7 +7,7 @@ function Video() {
     videoRef.current!.play();
   });
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen z-[0]">
       <div className="max-w-sm mx-auto lg:max-w-lg">
         <video
           autoPlay={true}

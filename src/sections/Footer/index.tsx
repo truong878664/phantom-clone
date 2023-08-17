@@ -3,7 +3,7 @@ import Logo from "../../partials/Logo";
 function Footer() {
   return (
     <footer>
-      <div className="bg-white text-black p-5 md:m-6 md:rounded-xl xl:mt-40 xl:flex xl:flex-row-reverse xl:p-10 xl:m-10">
+      <div className="bg-white text-black p-5 md:m-6 md:rounded-xl xl:mt-40 xl:flex xl:flex-row-reverse xl:p-10 xl:m-10 xl:rounded-[3rem] max-w-screen-2x lg:!mx-[7%]">
         <div className="xl:w-3/5">
           <div className="bg-theme-violet p-3 mb-14 rounded-lg md:rounded-xl lg:p-6">
             <input

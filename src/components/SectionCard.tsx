@@ -161,7 +161,7 @@ function SectionCard({
 
   return (
     <section id={name}>
-      <div className="h-[120vh] mt-[-50vh] relative z-[-1]">
+      <div className="h-[150vh] mt-[-50vh] relative z-[-1] ">
         <div
           className="sticky top-1/2 -translate-y-1/2 text-center opacity-0 scale-90"
           data-name={`label-heading-${name}`}

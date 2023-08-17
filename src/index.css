@@ -16,3 +16,8 @@ body {
 #root {
   font-family: "Poppins", sans-serif;
 }
+
+.max-width-content {
+  max-width: 1768px;
+  @apply !mx-auto;
+}

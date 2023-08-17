@@ -4,7 +4,7 @@ import logoText from "../../assets/image/logoText.png"
 function Header() {
   return (
     <header>
-      <div className="py-3 px-5 flex justify-between items-center h-[76px] relative z-[1] lg:pt-8 max-w-[1768px] mx-auto">
+      <div className="py-3 px-5 flex justify-between items-center h-[76px] relative z-10 lg:pt-8 max-width-content">
         <div className="z-[-1] flex">
           <Logo size="40" className="fill-c-dark-purple md:w-10" />
           <img src={logoText} alt="" className="h-8 aspect-auto ml-2 hidden lg:block"/>
