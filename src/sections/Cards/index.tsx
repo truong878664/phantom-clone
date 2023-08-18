@@ -1,4 +1,4 @@
-import SectionCard from '../../components/SectionCard';
+import SectionCard from '../../components/SectionCard2';
 import dataSecurity from '../../data/dataSecuriry';
 import dataWallet from '../../data/dataWallet';
 import dataWeb3tool from '../../data/dataWeb3tool';

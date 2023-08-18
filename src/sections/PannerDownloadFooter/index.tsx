@@ -37,7 +37,7 @@ function PannerDownloadFooter() {
     });
   }, []);
   return (
-    <section className="grid place-content-center pb-72 md:pt-32" ref={PannerDownloadFooterRef}>
+    <section className="grid place-content-center pb-72 md:pt-32 " ref={PannerDownloadFooterRef}>
       <PannerDownload title="Download * Phantom | to get started" topTitle="Trusted by more than 3 million people" sizeLabelHeader="medium" />
     </section>
   );

@@ -21,3 +21,29 @@ body {
   max-width: 1768px;
   @apply !mx-auto;
 }
+
+/* width */
+html::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+html::-webkit-scrollbar-track {
+  background: rgb(231, 224, 255);
+}
+
+/* Handle */
+html::-webkit-scrollbar-thumb {
+  background-clip: content-box;
+  background-color: rgb(77, 68, 105);
+  border: 6px solid transparent;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+html::-webkit-scrollbar-thumb:hover {
+  background-clip: content-box;
+  background-color: rgb(60 49 91);
+  border: 6px solid transparent;
+  border-radius: 20px;
+}
