@@ -9,6 +9,7 @@ function App() {
   useEffect(() => {
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
+      document.querySelector('#_phantom')?.remove();
     };
   });
   return (
