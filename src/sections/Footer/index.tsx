@@ -1,24 +1,15 @@
-import Logo from "../../partials/Logo";
+import Logo from '../../partials/Logo';
 
 function Footer() {
   return (
     <footer>
-      <div className="bg-white text-black p-5 md:m-6 md:rounded-xl xl:mt-40 xl:flex xl:flex-row-reverse xl:p-10 xl:m-10 xl:rounded-[3rem] max-w-screen-2x lg:!mx-[7%]">
+      <div className="max-w-screen-2x bg-white p-5 text-black md:m-6 md:rounded-xl lg:!mx-[7%] xl:m-10 xl:mt-40 xl:flex xl:flex-row-reverse xl:rounded-[3rem] xl:p-10">
         <div className="xl:w-3/5">
-          <div className="bg-theme-violet p-3 mb-14 rounded-lg md:rounded-xl lg:p-6">
-            <input
-              className="bg-transparent text-2xl w-full outline-none mb-2 md:text-3xl lg:text-5xl"
-              type="email"
-              placeholder="Enter your email"
-            />
-            <div className="flex items-end justify-between lg:text-xl lg:mt-10">
-              <p>
-                Sign up for our newsletter and join the growing Phantom
-                community.
-              </p>
-              <button className="bg-c-dark-purple text-white px-6 py-4 text-sm rounded-full whitespace-nowrap ml-2 lg:text-base lg:px-8">
-                Sign up
-              </button>
+          <div className="mb-14 rounded-lg bg-theme-violet p-3 md:rounded-xl lg:p-6">
+            <input className="mb-2 w-full bg-transparent text-2xl outline-none md:text-3xl lg:text-5xl" type="email" placeholder="Enter your email" />
+            <div className="flex items-end justify-between lg:mt-10 lg:text-xl">
+              <p>Sign up for our newsletter and join the growing Phantom community.</p>
+              <button className="ml-2 whitespace-nowrap rounded-full bg-c-dark-purple px-6 py-4 text-sm text-white lg:px-8 lg:text-base">Sign up</button>
             </div>
           </div>
           <ul className="grid grid-cols-2 gap-6 text-sm md:grid-cols-4">
@@ -75,7 +66,7 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="flex justify-between items-end mt-16 xl:w-2/5 xl:flex xl:flex-col xl:items-start xl:mt-0">
+        <div className="mt-16 flex items-end justify-between xl:mt-0 xl:flex xl:w-2/5 xl:flex-col xl:items-start">
           <Logo size="4rem" />
           <span className="text-sm text-stone-400">© Phantom 2023</span>
         </div>

@@ -1,15 +1,15 @@
-import React, { useRef } from "react";
-import lightOrDark from "../function/lightOrDark";
-import { gsap } from "gsap";
+import React, { useRef } from 'react';
+import lightOrDark from '../function/lightOrDark';
+import { gsap } from 'gsap';
 
-function CardLi({ video, color, className, style }: { video: string; color: string, className?:string, style?: React.CSSProperties }) {
+function CardLi({ video, color, className, style }: { video: string; color: string; className?: string; style?: React.CSSProperties }) {
   const bgTheme = lightOrDark(color);
   const videoRef: React.RefObject<HTMLVideoElement> = useRef(null);
 
   let isRunningAnimateCard: boolean = false;
   const handleMouseOver = (e: any) => {
     videoRef.current!.play();
-    const li = (e.target as HTMLElement).closest("li");
+    const li = (e.target as HTMLElement).closest('li');
     const rectLi: any = li?.getBoundingClientRect();
     const mouseX = e.clientX;
     const mouseY = e.clientY;
@@ -122,7 +122,6 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
       x: 0,
       y: 0,
       duration: 0.2,
-      
     });
   };
   function handleMouseLeave() {
@@ -157,39 +156,15 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
     const conditionThreeThirdHeight = mouseY < y + height;
 
     if (isEqual(mouseX, x)) {
-      return conditionOneThirdHeight
-        ? "leftTop"
-        : conditionTwoThirdHeight
-        ? "leftCenter"
-        : conditionThreeThirdHeight
-        ? "leftBottom"
-        : "left";
+      return conditionOneThirdHeight ? 'leftTop' : conditionTwoThirdHeight ? 'leftCenter' : conditionThreeThirdHeight ? 'leftBottom' : 'left';
     } else if (isEqual(mouseY, y)) {
-      return conditionOneThirdWidth
-        ? "topLeft"
-        : conditionTwoThirdWidth
-        ? "topCenter"
-        : conditionThreeThirdWidth
-        ? "topRight"
-        : "top";
+      return conditionOneThirdWidth ? 'topLeft' : conditionTwoThirdWidth ? 'topCenter' : conditionThreeThirdWidth ? 'topRight' : 'top';
     } else if (isEqual(mouseX, right)) {
-      return conditionOneThirdHeight
-        ? "rightTop"
-        : conditionTwoThirdHeight
-        ? "rightCenter"
-        : conditionThreeThirdHeight
-        ? "rightBottom"
-        : "right";
+      return conditionOneThirdHeight ? 'rightTop' : conditionTwoThirdHeight ? 'rightCenter' : conditionThreeThirdHeight ? 'rightBottom' : 'right';
     } else if (isEqual(mouseY, bottom)) {
-      return conditionOneThirdWidth
-        ? "bottomLeft"
-        : conditionTwoThirdWidth
-        ? "bottomCenter"
-        : conditionThreeThirdWidth
-        ? "bottomRight"
-        : "bottom";
+      return conditionOneThirdWidth ? 'bottomLeft' : conditionTwoThirdWidth ? 'bottomCenter' : conditionThreeThirdWidth ? 'bottomRight' : 'bottom';
     } else {
-      return "leftCenter";
+      return 'leftCenter';
     }
   }
   function isEqual(number1: number, number2: number) {
@@ -197,23 +172,12 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
   }
 
   return (
-    <li
-      className={`w-11/12 aspect-[7/10] shrink-0 md:w-1/2 xl:w-1/3 ${className}`}
-      onMouseOver={handleMouseOver}
-      onMouseLeave={handleMouseLeave}
-      style={style}
-    >
-      <div
-        className="h-full rounded-3xl relative overflow-hidden p-8"
-        style={{ backgroundColor: color }}
-      >
-        <p
-          data-bg={bgTheme}
-          className="text-2xl data-[bg='dark']:text-white data-[bg='light']:text-black"
-        >
+    <li className={`aspect-[7/10] w-11/12 shrink-0 md:w-1/2 xl:w-1/3 ${className}`} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} style={style}>
+      <div className="relative h-full overflow-hidden rounded-3xl p-8" style={{ backgroundColor: color }}>
+        <p data-bg={bgTheme} className="text-2xl data-[bg='dark']:text-white data-[bg='light']:text-black">
           Seamlessly access the largest NFT marketplaces.
         </p>
-        <div className="absolute top-0 left-0 right-0 bottom-0 ">
+        <div className="absolute bottom-0 left-0 right-0 top-0 ">
           <video
             playsInline
             // autoPlay

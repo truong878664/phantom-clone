@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import Cards from "./sections/Cards";
-import Footer from "./sections/Footer";
-import Header from "./sections/Header";
-import PannerDownloadFooter from "./sections/PannerDownloadFooter";
-import Welcome from "./sections/Welcome";
+import { useEffect } from 'react';
+import Cards from './sections/Cards';
+import Footer from './sections/Footer';
+import Header from './sections/Header';
+import PannerDownloadFooter from './sections/PannerDownloadFooter';
+import Welcome from './sections/Welcome';
 
 function App() {
   useEffect(() => {

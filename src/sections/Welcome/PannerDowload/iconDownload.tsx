@@ -1,7 +1,7 @@
-import appStore from "../../../assets/image/iconOS/appstore.png";
-import chPlay from "../../../assets/image/iconOS/chplay.svg";
-import windowIcon from "../../../assets/image/iconOS/window.png";
-import linux from "../../../assets/image/iconOS/linux.png";
+import appStore from '../../../assets/image/iconOS/appstore.png';
+import chPlay from '../../../assets/image/iconOS/chplay.svg';
+import windowIcon from '../../../assets/image/iconOS/window.png';
+import linux from '../../../assets/image/iconOS/linux.png';
 interface IconDownload {
   [key: string]: string;
 }

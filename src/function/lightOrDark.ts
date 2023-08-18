@@ -3,16 +3,14 @@ function lightOrDark(color: any) {
   // Check the format of the color, HEX or RGB?
   if (color.match(/^rgb/)) {
     // If HEX --> store the red, green, blue values in separate variables
-    color = color.match(
-      /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
-    );
+    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
 
     r = color[1];
     g = color[2];
     b = color[3];
   } else {
     // If RGB --> Convert it to HEX: http://gist.github.com/983661
-    color = +("0x" + color.slice(1).replace(color.length < 5 && /./g, "$&$&"));
+    color = +('0x' + color.slice(1).replace(color.length < 5 && /./g, '$&$&'));
 
     r = color >> 16;
     g = (color >> 8) & 255;
@@ -24,9 +22,9 @@ function lightOrDark(color: any) {
 
   // Using the HSP value, determine whether the color is light or dark
   if (hsp > 127.5) {
-    return "light";
+    return 'light';
   } else {
-    return "dark";
+    return 'dark';
   }
 }
 

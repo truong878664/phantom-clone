@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import videoWelcome from "../../../assets/video/video-welcome.webm";
+import { useEffect, useRef } from 'react';
+import videoWelcome from '../../../assets/video/video-welcome.webm';
 
 function Video() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -7,16 +7,9 @@ function Video() {
     videoRef.current!.play();
   });
   return (
-    <div className="relative h-screen z-[0] animate-[show_3s_linear]">
-      <div className="max-w-sm mx-auto lg:max-w-lg">
-        <video
-          autoPlay={true}
-          loop={true}
-          muted
-          playsInline
-          ref={videoRef}
-          src={videoWelcome}
-        ></video>
+    <div className="relative z-[0] h-screen animate-[show_3s_linear]">
+      <div className="mx-auto max-w-sm lg:max-w-lg">
+        <video autoPlay={true} loop={true} muted playsInline ref={videoRef} src={videoWelcome}></video>
       </div>
     </div>
   );

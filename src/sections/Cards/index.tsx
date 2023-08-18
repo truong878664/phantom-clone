@@ -1,18 +1,12 @@
-import SectionCard from "../../components/SectionCard";
-import dataSecurity from "../../data/dataSecuriry";
-import dataWallet from "../../data/dataWallet";
-import dataWeb3tool from "../../data/dataWeb3tool";
+import SectionCard from '../../components/SectionCard';
+import dataSecurity from '../../data/dataSecuriry';
+import dataWallet from '../../data/dataWallet';
+import dataWeb3tool from '../../data/dataWeb3tool';
 
 function Card() {
   return (
     <>
-      <SectionCard
-        dataCard={dataWallet}
-        header="Keep everything | in * one place"
-        iconTitle="fa-solid fa-wallet"
-        title="Your wallet"
-        name="wallet"
-      />
+      <SectionCard dataCard={dataWallet} header="Keep everything | in * one place" iconTitle="fa-solid fa-wallet" title="Your wallet" name="wallet" />
       <SectionCard
         dataCard={dataWeb3tool}
         header="Powerful * tools | made for everyone"

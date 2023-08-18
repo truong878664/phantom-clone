@@ -1,23 +1,18 @@
 interface LogoNew {
-  theme?: "purple";
+  theme?: 'purple';
   className: string;
 }
-function LogoNew({ theme = "purple", className }: LogoNew) {
+function LogoNew({ theme = 'purple', className }: LogoNew) {
   const themeLogos = {
     purple: {
-      fill: "#AB9FF2",
-      eye: "#F5F2FF",
+      fill: '#AB9FF2',
+      eye: '#F5F2FF',
     },
   };
 
   return (
     <span className={className}>
-      <svg
-        className={`aspect-[6/5] h-[1em]`}
-        viewBox="0 0 691 570"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg className={`aspect-[6/5] h-[1em]`} viewBox="0 0 691 570" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_5_61)">
           <g filter="url(#filter0_f_5_61)">
             <path
@@ -27,89 +22,27 @@ function LogoNew({ theme = "purple", className }: LogoNew) {
             />
           </g>
           <g filter="url(#filter1_f_5_61)">
-            <ellipse
-              cx="464"
-              cy="177.5"
-              rx="32"
-              ry="43.5"
-              fill={themeLogos[theme].eye}
-              className="logo-eye"
-            />
+            <ellipse cx="464" cy="177.5" rx="32" ry="43.5" fill={themeLogos[theme].eye} className="logo-eye" />
           </g>
           <g filter="url(#filter2_f_5_61)">
-            <ellipse
-              cx="594"
-              cy="177.5"
-              rx="32"
-              ry="43.5"
-              fill={themeLogos[theme].eye}
-              className="logo-eye"
-            />
+            <ellipse cx="594" cy="177.5" rx="32" ry="43.5" fill={themeLogos[theme].eye} className="logo-eye" />
           </g>
         </g>
         <defs>
-          <filter
-            id="filter0_f_5_61"
-            x="-1"
-            y="-1"
-            width="686.711"
-            height="569.653"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
+          <filter id="filter0_f_5_61" x="-1" y="-1" width="686.711" height="569.653" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation="2"
-              result="effect1_foregroundBlur_5_61"
-            />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_5_61" />
           </filter>
-          <filter
-            id="filter1_f_5_61"
-            x="428"
-            y="130"
-            width="72"
-            height="95"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
+          <filter id="filter1_f_5_61" x="428" y="130" width="72" height="95" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation="2"
-              result="effect1_foregroundBlur_5_61"
-            />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_5_61" />
           </filter>
-          <filter
-            id="filter2_f_5_61"
-            x="558"
-            y="130"
-            width="72"
-            height="95"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
+          <filter id="filter2_f_5_61" x="558" y="130" width="72" height="95" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation="2"
-              result="effect1_foregroundBlur_5_61"
-            />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_5_61" />
           </filter>
           <clipPath id="clip0_5_61">
             <rect width="691" height="570" fill="white" />
