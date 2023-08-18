@@ -14,60 +14,22 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
     const mouseX = e.clientX;
     const mouseY = e.clientY;
     const { right, bottom, width, height, x, y } = rectLi;
-
     const MAX_MOVE = 17;
     const MOVE_BACK_LARGE = 7;
     const MOVE_BACK_SMALL = 5;
     const positionAnimateMove: any = {
-      leftCenter: {
-        x: MAX_MOVE,
-        y: 0,
-      },
-      leftTop: {
-        x: MAX_MOVE,
-        y: MAX_MOVE,
-      },
-      leftBottom: {
-        x: MAX_MOVE,
-        y: -MAX_MOVE,
-      },
-
-      rightCenter: {
-        x: -MAX_MOVE,
-        y: 0,
-      },
-      rightTop: {
-        x: -MAX_MOVE,
-        y: MAX_MOVE,
-      },
-      rightBottom: {
-        x: -MAX_MOVE,
-        y: -MAX_MOVE,
-      },
-      topCenter: {
-        x: 0,
-        y: MAX_MOVE,
-      },
-      topLeft: {
-        x: MAX_MOVE,
-        y: MAX_MOVE,
-      },
-      topRight: {
-        x: -MAX_MOVE,
-        y: MAX_MOVE,
-      },
-      bottomCenter: {
-        x: 0,
-        y: -MAX_MOVE,
-      },
-      bottomLeft: {
-        x: MAX_MOVE,
-        y: -MAX_MOVE,
-      },
-      bottomRight: {
-        x: -MAX_MOVE,
-        y: -MAX_MOVE,
-      },
+      leftCenter: { x: MAX_MOVE, y: 0 },
+      leftTop: { x: MAX_MOVE, y: MAX_MOVE },
+      leftBottom: { x: MAX_MOVE, y: -MAX_MOVE },
+      rightCenter: { x: -MAX_MOVE, y: 0 },
+      rightTop: { x: -MAX_MOVE, y: MAX_MOVE },
+      rightBottom: { x: -MAX_MOVE, y: -MAX_MOVE },
+      topCenter: { x: 0, y: MAX_MOVE },
+      topLeft: { x: MAX_MOVE, y: MAX_MOVE },
+      topRight: { x: -MAX_MOVE, y: MAX_MOVE },
+      bottomCenter: { x: 0, y: -MAX_MOVE },
+      bottomLeft: { x: MAX_MOVE, y: -MAX_MOVE },
+      bottomRight: { x: -MAX_MOVE, y: -MAX_MOVE },
       _x(x: number) {
         return x === 0 ? 0 : x > 0 ? MOVE_BACK_SMALL : -MOVE_BACK_SMALL;
       },
@@ -81,17 +43,7 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
         return y === 0 ? 0 : y > 0 ? -MOVE_BACK_LARGE : MOVE_BACK_LARGE;
       },
     };
-
-    const positionFirstMouseOver = sidePosition({
-      width,
-      height,
-      mouseX,
-      mouseY,
-      x,
-      y,
-      right,
-      bottom,
-    });
+    const positionFirstMouseOver = sidePosition({ width, height, mouseX, mouseY, x, y, right, bottom });
     const timelineAnimateLi = gsap.timeline({
       onStart() {
         isRunningAnimateCard = true;
@@ -127,7 +79,6 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
   function handleMouseLeave() {
     videoRef.current!.pause();
   }
-
   function sidePosition({
     mouseX,
     mouseY,
@@ -170,6 +121,9 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
   function isEqual(number1: number, number2: number) {
     return Math.abs(number1 - number2) < 10 ? true : false;
   }
+  function isMobile() {
+    return window.innerWidth <= 800;
+  }
 
   return (
     <li className={`aspect-[7/10] w-11/12 shrink-0 md:w-1/2 xl:w-1/3 ${className}`} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} style={style}>
@@ -178,15 +132,7 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
           Seamlessly access the largest NFT marketplaces.
         </p>
         <div className="absolute bottom-0 left-0 right-0 top-0 ">
-          <video
-            playsInline
-            // autoPlay
-            loop
-            muted
-            className="h-full w-full object-cover"
-            src={video}
-            ref={videoRef}
-          ></video>
+          <video playsInline autoPlay={isMobile()} loop muted className="h-full w-full object-cover" src={video} ref={videoRef}></video>
         </div>
       </div>
     </li>

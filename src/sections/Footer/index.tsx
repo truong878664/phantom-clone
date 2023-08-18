@@ -19,50 +19,90 @@ function Footer() {
             <li>
               <span className="mb-4 block text-stone-500">Product</span>
               <ul className="flex flex-col gap-3">
-                <li>Download</li>
-                <li>Security</li>
-                <li>Support</li>
-                <li>Feature Requests</li>
+                <li>
+                  <a href="">Download</a>
+                </li>
+                <li>
+                  <a href="">Security</a>
+                </li>
+                <li>
+                  <a href="">Support</a>
+                </li>
+                <li>
+                  <a href="">Feature Requests</a>
+                </li>
               </ul>
             </li>
             <li>
               <span className="mb-4 block text-stone-500">Resources</span>
               <ul className="flex flex-col gap-3">
-                <li>Explore</li>
-                <li>Learn</li>
-                <li>Blog</li>
-                <li>Docs</li>
-                <li>Taxes</li>
+                <li>
+                  <a href="">Explore</a>
+                </li>
+                <li>
+                  <a href="">Learn</a>
+                </li>
+                <li>
+                  <a href="">Blog</a>
+                </li>
+                <li>
+                  <a href="">Docs</a>
+                </li>
+                <li>
+                  <a href="">Taxes</a>
+                </li>
               </ul>
             </li>
             <li>
               <span className="mb-4 block text-stone-500">Compony</span>
               <ul className="flex flex-col gap-3">
-                <li>About</li>
-                <li>Terms</li>
-                <li>Privacy</li>
-                <li>Status</li>
-                <li>Careers</li>
-                <li>Press Kit</li>
+                <li>
+                  <a href="">About</a>
+                </li>
+                <li>
+                  <a href="">Terms</a>
+                </li>
+                <li>
+                  <a href="">Privacy</a>
+                </li>
+                <li>
+                  <a href="">Status</a>
+                </li>
+                <li>
+                  <a href="">Careers</a>
+                </li>
+                <li>
+                  <a href="">Press Kit</a>
+                </li>
               </ul>
             </li>
             <li>
               <span className="mb-4 block text-stone-500">Socials</span>
               <ul className="flex flex-col gap-3">
                 <li>
-                  <FontAwesomeIcon icon={faTwitter} /> Twitter
+                  <a href="">
+                    <FontAwesomeIcon icon={faTwitter} /> Twitter
+                  </a>
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faYoutube} /> Youtube
+                  <a href="">
+                    <FontAwesomeIcon icon={faYoutube} /> Youtube
+                  </a>
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faReddit} /> Reddit
+                  <a href="">
+                    <FontAwesomeIcon icon={faReddit} /> Reddit
+                  </a>
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faPodcast} /> Podcast
+                  <a href="">
+                    <FontAwesomeIcon icon={faPodcast} /> Podcast
+                  </a>
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faLinkedin} /> Linkedin
+                  <a href="">
+                    <FontAwesomeIcon icon={faLinkedin} /> Linkedin
+                  </a>
                 </li>
               </ul>
             </li>
