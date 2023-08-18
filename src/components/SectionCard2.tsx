@@ -3,6 +3,9 @@ import { useEffect, useRef } from 'react';
 import CardLi from './CardLi';
 import LabelHeading from './LabelHeading';
 import { ScrollTrigger } from 'gsap/all';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 type SectionCard = {
   dataCard: {
@@ -13,7 +16,7 @@ type SectionCard = {
   header: `${string}|${string}*${string}` | `${string}*${string}|${string}`;
   title: string;
   name: string;
-  iconTitle: string;
+  iconTitle: IconProp;
 };
 
 function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) {
@@ -183,15 +186,15 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
         <div className="mx-auto h-screen max-w-[1728px]">
           <div className="mt-10 flex items-center justify-between px-4">
             <div className="flex h-10 items-center gap-2 rounded-full bg-white px-4 text-sm lg:text-xl">
-              <i className={iconTitle}></i>
+              <FontAwesomeIcon icon={iconTitle} />
               <span>{title}</span>
             </div>
             <div className="flex gap-1 rounded-full bg-white p-1">
               <button className="aspect-square w-9 rounded-full hover:bg-c-purple/30">
-                <i className="fa-solid fa-angle-left" />
+                <FontAwesomeIcon icon={faAngleLeft} />
               </button>
               <button className="aspect-square w-9 rounded-full hover:bg-c-purple/30">
-                <i className="fa-solid fa-angle-right"></i>
+                <FontAwesomeIcon icon={faAngleRight} />
               </button>
             </div>
           </div>

@@ -1,5 +1,7 @@
 import Logo from '../../partials/Logo';
 import logoText from '../../assets/image/logoText.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faGlobe, faMessage, faShieldHeart, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
   return (
@@ -20,7 +22,7 @@ function Header() {
             <ul className="group ml-6 flex w-full flex-col gap-4 py-4 text-base text-c-dark-purple xl:relative xl:ml-0 xl:flex-row xl:gap-0 xl:px-0 xl:text-sm">
               <li className="group/li-nav peer/li-1 peer/li-nav cursor-pointer xl:min-w-[120px] xl:px-4 xl:py-2">
                 <span className="mr-4 inline-block aspect-square xl:mr-0 xl:max-w-0 xl:scale-0 xl:transition-all xl:duration-500 xl:group-hover/li-nav:mr-2 xl:group-hover/li-nav:max-w-[40px] xl:group-hover/li-nav:scale-100">
-                  <i className="fa-solid fa-shield-heart"></i>
+                  <FontAwesomeIcon icon={faShieldHeart} />
                 </span>
                 <span>Security</span>
               </li>
@@ -40,13 +42,13 @@ function Header() {
               </li>
               <li className="group/li-nav peer/li-3 peer/li-nav cursor-pointer xl:min-w-[120px] xl:px-4 xl:py-2">
                 <span className="mr-4 inline-block aspect-square xl:mr-0 xl:max-w-0 xl:scale-0 xl:transition-all xl:duration-500 xl:group-hover/li-nav:mr-2 xl:group-hover/li-nav:max-w-[40px] xl:group-hover/li-nav:scale-100">
-                  <i className="fa-solid fa-globe"></i>
+                  <FontAwesomeIcon icon={faGlobe} />
                 </span>
                 <span>Explore</span>
               </li>
               <li className="group/li-nav peer/li-4 peer/li-nav cursor-pointer xl:min-w-[120px] xl:px-4 xl:py-2">
                 <span className="mr-4 inline-block aspect-square xl:mr-0 xl:max-w-0 xl:scale-0 xl:transition-all xl:duration-500 xl:group-hover/li-nav:mr-2 xl:group-hover/li-nav:max-w-[40px] xl:group-hover/li-nav:scale-100">
-                  <i className="fa-solid fa-message"></i>
+                  <FontAwesomeIcon icon={faMessage} />
                 </span>
                 <span>Support</span>
               </li>
@@ -60,10 +62,10 @@ function Header() {
           <label htmlFor="nav-bar-input" className="group grid aspect-square h-12 place-content-center rounded-full bg-white text-lg xl:hidden">
             <div className="relative h-1 w-1">
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-100 transition-all duration-1000 peer-checked/nav-bar:group-[]:scale-0">
-                <i className="fa-solid fa-bars"></i>
+                <FontAwesomeIcon icon={faBars} />
               </span>
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 transition-all duration-1000 peer-checked/nav-bar:group-[]:scale-100">
-                <i className="fa-solid fa-xmark"></i>
+                <FontAwesomeIcon icon={faXmark} />
               </span>
             </div>
           </label>

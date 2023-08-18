@@ -1,4 +1,7 @@
+import { faLinkedin, faReddit, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Logo from '../../partials/Logo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPodcast } from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
   return (
@@ -47,19 +50,19 @@ function Footer() {
               <span className="mb-4 block text-stone-500">Socials</span>
               <ul className="flex flex-col gap-3">
                 <li>
-                  <i className="fa-brands fa-twitter"></i> Twitter
+                  <FontAwesomeIcon icon={faTwitter} /> Twitter
                 </li>
                 <li>
-                  <i className="fa-brands fa-youtube"></i> Youtube
+                  <FontAwesomeIcon icon={faYoutube} /> Youtube
                 </li>
                 <li>
-                  <i className="fa-brands fa-reddit"></i> Reddit
+                  <FontAwesomeIcon icon={faReddit} /> Reddit
                 </li>
                 <li>
-                  <i className="fa-solid fa-podcast"></i> Podcast
+                  <FontAwesomeIcon icon={faPodcast} /> Podcast
                 </li>
                 <li>
-                  <i className="fa-brands fa-linkedin"></i> Linkedin
+                  <FontAwesomeIcon icon={faLinkedin} /> Linkedin
                 </li>
               </ul>
             </li>
