@@ -33,7 +33,10 @@ function PannerDownloadFooter() {
     gsap.registerPlugin(ScrollToPlugin);
     queryAndAnimates.forEach((tween) => {
       const { query, ...css } = tween;
-      gsap.to(tween.query, { ...commonOption, ...css });
+      gsap.to(tween.query, {
+        ...commonOption,
+        ...css,
+      });
     });
   }, []);
   return (

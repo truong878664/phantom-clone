@@ -1,7 +1,7 @@
 import Logo from '../../partials/Logo';
 import logoText from '../../assets/image/logoText.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faGlobe, faMessage, faShieldHeart, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBolt, faGlobe, faMessage, faShieldHeart, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
   return (
@@ -29,7 +29,7 @@ function Header() {
               <li className="group/li-nav peer/li-2 peer/li-nav xl:relative">
                 <div className="cursor-pointer xl:min-w-[120px] xl:px-4 xl:py-2 ">
                   <span className="mr-4 inline-block aspect-square xl:mr-0 xl:max-w-0 xl:scale-0 xl:transition-all xl:duration-500 xl:group-hover/li-nav:mr-2 xl:group-hover/li-nav:max-w-[40px] xl:group-hover/li-nav:scale-100">
-                    <i className="fa-solid fa-bolt"></i>
+                    <FontAwesomeIcon icon={faBolt} />
                   </span>
                   <span>Learn</span>
                 </div>

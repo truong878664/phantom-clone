@@ -2,7 +2,19 @@ import React, { useRef } from 'react';
 import lightOrDark from '../function/lightOrDark';
 import { gsap } from 'gsap';
 
-function CardLi({ video, color, className, style }: { video: string; color: string; className?: string; style?: React.CSSProperties }) {
+function CardLi({
+  video,
+  color,
+  className,
+  style,
+  videoMp4,
+}: {
+  video: string;
+  videoMp4: string;
+  color: string;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   const bgTheme = lightOrDark(color);
   const videoRef: React.RefObject<HTMLVideoElement> = useRef(null);
 
@@ -128,11 +140,14 @@ function CardLi({ video, color, className, style }: { video: string; color: stri
   return (
     <li className={`aspect-[7/10] w-11/12 shrink-0 md:w-1/2 xl:w-1/3 ${className}`} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} style={style}>
       <div className="relative h-full overflow-hidden rounded-3xl p-8" style={{ backgroundColor: color }}>
-        <p data-bg={bgTheme} className="text-2xl data-[bg='dark']:text-white data-[bg='light']:text-black">
+        <p data-bg={bgTheme} className="relative z-10 text-2xl data-[bg='dark']:text-white data-[bg='light']:text-black">
           Seamlessly access the largest NFT marketplaces.
         </p>
         <div className="absolute bottom-0 left-0 right-0 top-0 ">
-          <video playsInline autoPlay={isMobile()} loop muted className="h-full w-full object-cover" src={video} ref={videoRef}></video>
+          <video playsInline autoPlay={isMobile()} loop muted className="h-full w-full object-cover" ref={videoRef}>
+            <source src={video} type="video/webm" />
+            <source src={videoMp4} type="video/mp4" />
+          </video>
         </div>
       </div>
     </li>

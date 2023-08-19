@@ -3,17 +3,22 @@ import { useEffect, useRef } from 'react';
 import CardLi from './CardLi';
 import LabelHeading from './LabelHeading';
 import { ScrollTrigger } from 'gsap/all';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import animationLogoPhantom from '../function/animateLogoPhantom';
 
 type SectionCard = {
   dataCard: {
     color: string;
     video: string;
     describe: string;
+    videoMp4: string;
   }[];
   header: `${string}|${string}*${string}` | `${string}*${string}|${string}`;
   title: string;
   name: string;
-  iconTitle: string;
+  iconTitle: IconProp;
 };
 
 function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) {
@@ -131,6 +136,9 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
       },
       opacity: 1,
       scale: 1,
+      onStart() {
+        animationLogoPhantom();
+      },
     });
 
     gsap.to(queryLabelUlCard, {
@@ -140,11 +148,38 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
         markers: false,
       },
       onStart() {
+        /*set left fot card default*/
+        const cards = document.querySelectorAll(`[data-name='ul-card-${name}'] .li-card`);
+        const MARGIN_LEFT_CARD = 20;
+        cards.forEach((card, index) => {
+          const rect = card.getBoundingClientRect();
+          (card as HTMLLIElement).style.left = (rect.width + MARGIN_LEFT_CARD) * index + 'px';
+        });
+
         this._targets[0].dataset.status = 'un-group';
+
+        /*animation card start*/
+        const tlStartLi = gsap.timeline();
+        tlStartLi.to(`[data-name='ul-card-${name}'] .li-card`, {
+          x: 'random(0, 10)',
+          y: 'random(0, 10)',
+        });
+        tlStartLi.to(`[data-name='ul-card-${name}'] .li-card`, {
+          x: 'random(-7, -3)',
+          y: 'random(-7, -3)',
+        });
+        tlStartLi.to(`[data-name='ul-card-${name}'] .li-card`, {
+          x: 0,
+          y: 0,
+        });
+      },
+      onComplete() {
+        setTimeout(() => {
+          this._targets[0].dataset.position = 'static';
+        }, 500);
       },
     });
   }, []);
-
   return (
     <section id={name}>
       <div className="relative z-[-1] mt-[-50vh] h-[150vh] ">
@@ -156,33 +191,35 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
         <div className="mx-auto h-screen max-w-[1728px]">
           <div className="mt-10 flex items-center justify-between px-4">
             <div className="flex h-10 items-center gap-2 rounded-full bg-white px-4 text-sm lg:text-xl">
-              <i className={iconTitle}></i>
+              <FontAwesomeIcon icon={iconTitle} />
               <span>{title}</span>
             </div>
             <div className="flex gap-1 rounded-full bg-white p-1">
               <button className="aspect-square w-9 rounded-full hover:bg-c-purple/30">
-                <i className="fa-solid fa-angle-left" />
+                <FontAwesomeIcon icon={faAngleLeft} />
               </button>
               <button className="aspect-square w-9 rounded-full hover:bg-c-purple/30">
-                <i className="fa-solid fa-angle-right"></i>
+                <FontAwesomeIcon icon={faAngleRight} />
               </button>
             </div>
           </div>
           <div className="relative z-10 mt-10 w-full cursor-w-resize select-none px-6 active:cursor-grabbing md:px-10" ref={wrapperCardDivRef}>
             <ul
               data-status="group"
-              className="user-select-none group/ul-card flex w-full items-stretch gap-2 data-[status='group']:relative md:gap-6"
+              data-position="relative"
+              className="user-select-none group/ul-card flex w-full items-stretch gap-2 data-[position='relative']:relative md:gap-6"
               ref={wrapperCardUlRef}
               style={{ transform: 'translate3d(0px, 0px, 0px)' }}
               data-name={`ul-card-${name}`}
             >
               {dataCard.map((card, index) => (
                 <CardLi
+                  className="li-card transition-[left] duration-1000 group-data-[position='relative']/ul-card:absolute group-data-[status='group']/ul-card:!left-0 group-data-[status='un-group']/ul-card:!ml-0 md:group-data-[status='group']/ul-card:!left-1/4"
+                  style={{ marginLeft: `${index * 20}px`, zIndex: dataCard.length - index }}
                   video={card.video}
+                  videoMp4={card.videoMp4}
                   key={index}
                   color={card.color}
-                  style={{ marginLeft: `${-index * 10}px` }}
-                  className="group-data-[status='group']/ul-card:absolute group-data-[status='group']/ul-card:left-1/2 group-data-[status='un-group']/ul-card:!ml-0 group-data-[status='group']/ul-card:!-translate-x-1/2 group-data-[status='group']/ul-card:transition-all group-data-[status='group']/ul-card:duration-1000"
                 />
               ))}
             </ul>

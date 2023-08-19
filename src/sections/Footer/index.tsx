@@ -19,16 +19,16 @@ function Footer() {
             <li>
               <span className="mb-4 block text-stone-500">Product</span>
               <ul className="flex flex-col gap-3">
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Download</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Security</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Support</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Feature Requests</a>
                 </li>
               </ul>
@@ -36,19 +36,19 @@ function Footer() {
             <li>
               <span className="mb-4 block text-stone-500">Resources</span>
               <ul className="flex flex-col gap-3">
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Explore</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Learn</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Blog</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Docs</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Taxes</a>
                 </li>
               </ul>
@@ -56,22 +56,22 @@ function Footer() {
             <li>
               <span className="mb-4 block text-stone-500">Compony</span>
               <ul className="flex flex-col gap-3">
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">About</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Terms</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Privacy</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Status</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Careers</a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple">
                   <a href="">Press Kit</a>
                 </li>
               </ul>
@@ -79,27 +79,27 @@ function Footer() {
             <li>
               <span className="mb-4 block text-stone-500">Socials</span>
               <ul className="flex flex-col gap-3">
-                <li>
+                <li className="hover:text-c-purple hover:underline">
                   <a href="">
                     <FontAwesomeIcon icon={faTwitter} /> Twitter
                   </a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple hover:underline">
                   <a href="">
                     <FontAwesomeIcon icon={faYoutube} /> Youtube
                   </a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple hover:underline">
                   <a href="">
                     <FontAwesomeIcon icon={faReddit} /> Reddit
                   </a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple hover:underline">
                   <a href="">
                     <FontAwesomeIcon icon={faPodcast} /> Podcast
                   </a>
                 </li>
-                <li>
+                <li className="hover:text-c-purple hover:underline">
                   <a href="">
                     <FontAwesomeIcon icon={faLinkedin} /> Linkedin
                   </a>

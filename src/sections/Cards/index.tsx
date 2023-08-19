@@ -1,5 +1,5 @@
 import { faEarthAsia, faShieldHeart, faWallet } from '@fortawesome/free-solid-svg-icons';
-import SectionCard from '../../components/SectionCard2';
+import SectionCard from '../../components/SectionCard';
 import dataSecurity from '../../data/dataSecuriry';
 import dataWallet from '../../data/dataWallet';
 import dataWeb3tool from '../../data/dataWeb3tool';
