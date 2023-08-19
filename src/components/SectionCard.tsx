@@ -7,6 +7,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import animationLogoPhantom from '../function/animateLogoPhantom';
+import getTranslateXCss from '../function/getTranslateXCss';
 
 type SectionCard = {
   dataCard: {
@@ -39,8 +40,7 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
       start(e: TypeEvent): any {
         isMouseUp = true;
         startX = this.getClientX(e);
-        const maxtrix = new DOMMatrixReadOnly(wrapperCardUl.style.transform);
-        currentX = maxtrix.m41;
+        currentX = getTranslateXCss(wrapperCardUl);
         updateMinMaxTransformX();
       },
       end(): any {
@@ -51,6 +51,7 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
         } else if (nextX >= -maxTransformX && nextX < -(widthUlWrapper - wrapperCardUl.offsetWidth)) {
           nextX = -(maxTransformX - widthLiCard);
         }
+
         gsap.to(`[data-name='ul-card-${name}']`, {
           duration: 0.5,
           transform: `translate3d(${nextX}px, 0px, 0px)`,
@@ -180,6 +181,38 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
       },
     });
   }, []);
+
+  const handleMoveCard = (e: any) => {
+    const typeMove: 'left' | 'right' = e.target.dataset.type;
+    const cardLi = wrapperCardUlRef.current?.firstChild;
+    const widthUl = wrapperCardUlRef.current?.scrollWidth || window.innerWidth;
+
+    if (!cardLi) return;
+    const widthCard = (cardLi as HTMLElement).getBoundingClientRect().width * (typeMove === 'left' ? 1 : -1);
+    const currentTranslateXValue = getTranslateXCss(wrapperCardUlRef.current);
+
+    if (currentTranslateXValue > 0) return;
+    const tl = gsap.timeline();
+    tl.to(wrapperCardUlRef.current, {
+      duration: 0.5,
+      transform: `translate3d(${currentTranslateXValue + widthCard}px, 0px, 0px)`,
+      onComplete() {
+        if (getTranslateXCss(wrapperCardUlRef.current as HTMLElement) > 0) {
+          tl.to(wrapperCardUlRef.current, {
+            duration: 0.5,
+            transform: `translate3d(0px, 0px, 0px)`,
+          });
+        } else if (getTranslateXCss(wrapperCardUlRef.current as HTMLElement) < -(widthUl - Math.abs(widthCard))) {
+          console.log(-widthUl + Math.abs(widthCard));
+
+          tl.to(wrapperCardUlRef.current, {
+            duration: 0.5,
+            transform: `translate3d(${-widthUl + Math.abs(widthCard)}px, 0px, 0px)`,
+          });
+        }
+      },
+    });
+  };
   return (
     <section id={name}>
       <div className="relative z-[-1] mt-[-50vh] h-[150vh] ">
@@ -195,11 +228,15 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
               <span>{title}</span>
             </div>
             <div className="flex gap-1 rounded-full bg-white p-1">
-              <button className="aspect-square w-9 rounded-full hover:bg-c-purple/30">
-                <FontAwesomeIcon icon={faAngleLeft} />
+              <button className="aspect-square w-9 rounded-full hover:bg-c-purple/30" data-type="left" onClick={handleMoveCard}>
+                <span className="pointer-events-none">
+                  <FontAwesomeIcon icon={faAngleLeft} />
+                </span>
               </button>
-              <button className="aspect-square w-9 rounded-full hover:bg-c-purple/30">
-                <FontAwesomeIcon icon={faAngleRight} />
+              <button className="aspect-square w-9 rounded-full hover:bg-c-purple/30" data-type="right" onClick={handleMoveCard}>
+                <span className="pointer-events-none">
+                  <FontAwesomeIcon icon={faAngleRight} />
+                </span>
               </button>
             </div>
           </div>
