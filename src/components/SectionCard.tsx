@@ -202,12 +202,10 @@ function SectionCard({ dataCard, header, title, name, iconTitle }: SectionCard) 
             duration: 0.5,
             transform: `translate3d(0px, 0px, 0px)`,
           });
-        } else if (getTranslateXCss(wrapperCardUlRef.current as HTMLElement) < -(widthUl - Math.abs(widthCard))) {
-          console.log(-widthUl + Math.abs(widthCard));
-
+        } else if (getTranslateXCss(wrapperCardUlRef.current as HTMLElement) < -(widthUl - (wrapperCardUlRef.current?.offsetWidth || window.innerWidth))) {
           tl.to(wrapperCardUlRef.current, {
             duration: 0.5,
-            transform: `translate3d(${-widthUl + Math.abs(widthCard)}px, 0px, 0px)`,
+            transform: `translate3d(${-(widthUl - (wrapperCardUlRef.current?.offsetWidth || window.innerWidth))}px, 0px, 0px)`,
           });
         }
       },
